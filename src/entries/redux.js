@@ -43,13 +43,23 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
-const $container = document.getElementById('playlist');
-const playlist = store.getState();
-playlist.forEach((item) => {
-  const template = document.createElement('p');
-  template.textContent = item.title;
-  $container.appendChild(template);
-})
+function render() {
+  const $container = document.getElementById('playlist');
+  const playlist = store.getState();
+  $container.innerHTML = '';
+  playlist.forEach((item) => {
+    const template = document.createElement('p');
+    template.textContent = item.title;
+    $container.appendChild(template);
+  })
+}
+render();
 
-console.log(store.getState())
+function handleChange() {
+  render();
+}
+
+store.subscribe(handleChange)
+
+// console.log(store.getState())
 
