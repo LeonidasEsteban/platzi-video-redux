@@ -4,6 +4,7 @@
   display: inline-block;
   width: 260px;
   vertical-align: top;
+  margin-bottom: 15px;
 }
 
 .Media:hover .Media-cover {
